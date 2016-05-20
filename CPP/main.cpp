@@ -7,6 +7,9 @@
 //#include <GL/glu.h>
 #include <GL/freeglut.h>
 #endif
+
+#include "Podstawa.hpp"
+
 #include <stdlib.h>
 #include <iostream>
 
@@ -34,9 +37,9 @@ void display()
 
 void loop()
 {
-	#if defined __APPLE__
+	#if defined __APPLE__//if dla OSX
 	system("sleep 0.001");
-	#else
+	#else//else WINDOWS etc.
 	Sleep(1);
 	#endif
 	glutPostRedisplay();
