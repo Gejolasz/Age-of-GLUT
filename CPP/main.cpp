@@ -14,7 +14,7 @@ using namespace std;
 
 void init()
 {
-	
+
 }
 
 
@@ -24,9 +24,9 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	
+
 	glPopMatrix();
-	
+
 	glutPostRedisplay();
 	glutSwapBuffers();
 }
@@ -34,8 +34,11 @@ void display()
 
 void loop()
 {
-	
+	#if defined __APPLE__
+	system("sleep 0.001");
+	#else
 	Sleep(1);
+	#endif
 	glutPostRedisplay();
 }
 
