@@ -8,7 +8,7 @@
 #include <GL/freeglut.h>
 #endif
 
-#include "Podstawa.hpp"
+#include "Jednostka.hpp"
 
 #include <stdlib.h>
 #include <iostream>
