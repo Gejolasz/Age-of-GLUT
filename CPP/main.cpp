@@ -9,7 +9,6 @@
 #endif
 
 #include "Jednostka.hpp"
-#include "Gracz.hpp"
 
 #include <stdlib.h>
 #include <iostream>
