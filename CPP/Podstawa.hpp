@@ -6,7 +6,7 @@
 
 class cPodstawa
 {
-private:
+protected:
     int HP;
     int Dmg;
     int Def;
@@ -16,9 +16,6 @@ private:
     float x;
 
     int pEvo;
-    int pDef;
-    int pMvSpd;
-    int pDmg;
 
 public:
     float Polozenie(void);
@@ -26,9 +23,6 @@ public:
     void Ruch(cPodstawa);
     void czyZasieg(cPodstawa);
     void minusHP(int);
-    void ileDef(void);
-    int ileDmg(void);
-    void ileMvSpd(void);
 };
 
 #endif

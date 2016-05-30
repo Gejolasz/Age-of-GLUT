@@ -48,17 +48,3 @@ void cPodstawa::minusHP(int oDmg)
 //jakieśtam przeliczanie dmg / pancerz
     HP = HP - oDmg;
 }
-
-void cPodstawa::ileDef()
-{
-    Def = Def + pDef;
-}
-
-int cPodstawa::ileDmg()
-{
-    Dmg = Dmg + pDmg;
-}
-void cPodstawa::ileMvSpd()
-{
-    MvSpd = MvSpd + pMvSpd;
-}

@@ -9,11 +9,14 @@
 #endif
 
 #include "Podstawa.hpp"
+#include "Budynek.hpp"
 
 #include <stdlib.h>
 #include <iostream>
 
 using namespace std;
+
+cBudynek Budynek(5000);
 
 void init()
 {
@@ -27,7 +30,7 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-
+	Budynek.Rysuj();
 	glPopMatrix();
 
 	glutPostRedisplay();
