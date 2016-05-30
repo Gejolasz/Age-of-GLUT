@@ -10,6 +10,7 @@
 
 #include "Podstawa.hpp"
 #include "Budynek.hpp"
+#include "Jednostka.hpp"
 
 #include <stdlib.h>
 #include <iostream>
@@ -17,6 +18,7 @@
 using namespace std;
 
 cBudynek Budynek(5000);
+cJednostka Jednostka(1);
 
 void init()
 {
@@ -31,6 +33,7 @@ void display()
 
 	glPushMatrix();
 	Budynek.Rysuj();
+	Jednostka.Rysuj();
 	glPopMatrix();
 
 	glutPostRedisplay();
