@@ -10,7 +10,7 @@ private:
 	int Exp;//ile exp za zabicie
 
 public:
-	cJednostka(float,float);
+	cJednostka(float, float, char);//_x, _MvSpd, _Player
 	~cJednostka();
 
 
