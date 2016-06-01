@@ -23,9 +23,9 @@ void cJednostka::Rysuj()
 	glTranslated(x, 0.0, 0.0);
 	glBegin(GL_POLYGON);
 
-	glVertex2d(x - 0.5, -0.5);
-	glVertex2d(x, 0.5);
-	glVertex2d(x + 0.5, -0.5);
+	glVertex2d(0- 0.5, -0.5);
+	glVertex2d(0, 0.5);
+	glVertex2d(0 + 0.5, -0.5);
 
 	glEnd();
 

@@ -17,8 +17,8 @@
 
 using namespace std;
 
-cBudynek BudynekA(5000,15,'A');//hp,x,gracz;
-cBudynek BudynekB(5000,-15,'B');//hp,x,gracz;
+cBudynek BudynekA(5000,18,'A');//hp,x,gracz;
+cBudynek BudynekB(5000,-18,'B');//hp,x,gracz;
 cJednostka Jednostka(0,-0.05,10,25);
 
 void init()

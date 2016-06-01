@@ -4,7 +4,7 @@
 
 bool cPodstawa::Kolizja(cPodstawa Obj)
 {
-    if(abs(Obj.x-x)<=5)//szerokosc jednostki = 50
+    if(abs(Obj.x-x)<=1)//szerokosc jednostki = 50
     {
         std::cout<< abs(Obj.x-x) <<" Kolizja!";
         return 1;
