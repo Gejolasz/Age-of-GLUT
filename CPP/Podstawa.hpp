@@ -32,7 +32,6 @@ protected:
     char Gracz;
 
 public:
-    float Polozenie(void);
     bool Kolizja(cPodstawa);
     void Ruch();
     bool czyZasieg(cPodstawa);

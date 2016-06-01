@@ -2,21 +2,17 @@
 #include <math.h>
 #include <stdlib.h>
 
-float cPodstawa::Polozenie()
-{
-    return x;
-}
 bool cPodstawa::Kolizja(cPodstawa Obj)
 {
-    if(abs(Obj.Polozenie()-x)<=5)//szerokosc jednostki = 50
+    if(abs(Obj.x-x)<=5)//szerokosc jednostki = 50
     {
-        std::cout<< abs(Obj.Polozenie()-x) <<" Kolizja!";
+        std::cout<< abs(Obj.x-x) <<" Kolizja!";
         return 1;
 
     }
     else
     {
-      std::cout<<"| "<<Obj.Polozenie()<<" - "<<x<<" = "<< abs(Obj.Polozenie()-x)<< "\n";
+      std::cout<<"| "<<Obj.x<<" - "<<x<<" = "<< abs(Obj.x-x)<< "\n";
       return 0 ;
     }
 
@@ -30,7 +26,7 @@ void cPodstawa::Ruch()
 bool cPodstawa::czyZasieg(cPodstawa Obj)
 {
     bool wZasiegu = 0;
-    if(abs(Obj.Polozenie()-x) <= Range)
+    if(abs(Obj.x-x) <= Range)
     {
         return  1;
     }
