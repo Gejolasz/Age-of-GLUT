@@ -19,7 +19,7 @@ using namespace std;
 
 cBudynek BudynekA(5000,10,'A');//hp,x,gracz;
 cBudynek BudynekB(5000,-10,'B');//hp,x,gracz;
-cJednostka Jednostka(0,-0.05);
+cJednostka Jednostka(0,0.05,10,1);
 
 void init()
 {
@@ -39,8 +39,11 @@ void display()
 
 	if(!Jednostka.cPodstawa::Kolizja(BudynekA) and !Jednostka.cPodstawa::Kolizja(BudynekB))
 	{
-		Jednostka.cPodstawa::Ruch(0.005);
+		Jednostka.cPodstawa::Ruch();
 	}
+	if(Jednostka.cPodstawa::czyZasieg(BudynekA))
+	BudynekA.minusHP(Jednostka.Damage());
+
 
 	glPopMatrix();
 
@@ -56,6 +59,7 @@ void loop()
 	#else//else WINDOWS etc.
 	Sleep(1);
 	#endif
+
 	glutPostRedisplay();
 }
 

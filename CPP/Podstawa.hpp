@@ -34,8 +34,8 @@ protected:
 public:
     float Polozenie(void);
     bool Kolizja(cPodstawa);
-    void Ruch(float);
-    void czyZasieg(cPodstawa);
+    void Ruch();
+    bool czyZasieg(cPodstawa);
     void minusHP(int);
 };
 

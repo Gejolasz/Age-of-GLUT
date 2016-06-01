@@ -1,10 +1,12 @@
 #include "Jednostka.hpp"
 
 
-cJednostka::cJednostka(float _x, float _mvspeed)
+cJednostka::cJednostka(float _x, float speed,float range,int damage)
 {
 	x = _x;
-	MvSpd = _mvspeed;
+	Range = range;
+	Dmg = damage;
+	MvSpd = speed;
 }
 
 cJednostka::~cJednostka()
@@ -28,4 +30,8 @@ void cJednostka::Rysuj()
 	glEnd();
 
 	glPopMatrix();
+}
+int cJednostka::Damage()
+{
+	return Dmg;
 }

@@ -2,7 +2,6 @@
 #include <math.h>
 #include <stdlib.h>
 
-
 float cPodstawa::Polozenie()
 {
     return x;
@@ -23,30 +22,24 @@ bool cPodstawa::Kolizja(cPodstawa Obj)
 
 }
 
-void cPodstawa::Ruch(float _MvSpd)
+void cPodstawa::Ruch()
 {
-  MvSpd = _MvSpd;
     x += MvSpd;
 }
 
-void cPodstawa::czyZasieg(cPodstawa Obj)
+bool cPodstawa::czyZasieg(cPodstawa Obj)
 {
     bool wZasiegu = 0;
-    if(abs(Obj.Polozenie() - x) <= Range)
+    if(abs(Obj.Polozenie()-x) <= Range)
     {
-        wZasiegu =  1;
+        return  1;
     }
     else
-        wZasiegu = 0 ;
-
-    if(wZasiegu)
-    {
-        Obj.minusHP(Dmg);
-    }
+        return 0 ;
 }
 
 void cPodstawa::minusHP(int oDmg)
 {
-//jakieśtam przeliczanie dmg / pancerz
     HP = HP - oDmg;
+    std::cout<<" HP: "<<HP<<"\n";
 }
