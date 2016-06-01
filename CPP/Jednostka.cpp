@@ -1,9 +1,10 @@
 #include "Jednostka.hpp"
 
 
-cJednostka::cJednostka(float _x)
+cJednostka::cJednostka(float _x, float _mvspeed)
 {
 	x = _x;
+	MvSpd = _mvspeed;
 }
 
 cJednostka::~cJednostka()
@@ -15,7 +16,7 @@ cJednostka::~cJednostka()
 void cJednostka::Rysuj()
 {
 	glPushMatrix();
-	
+
 	glColor3f(0.50, 0.50, 0.0);
 	glTranslated(x, 0.0, 0.0);
 	glBegin(GL_POLYGON);

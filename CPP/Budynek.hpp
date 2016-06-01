@@ -10,7 +10,7 @@ class cBudynek : public cPodstawa
 private:
 
 public:
-    cBudynek(int);
+    cBudynek(int,float,char);
     void Rysuj(void);
 
 };

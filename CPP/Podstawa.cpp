@@ -1,4 +1,6 @@
 #include "Podstawa.hpp"
+#include <math.h>
+#include <stdlib.h>
 
 
 float cPodstawa::Polozenie()
@@ -7,24 +9,24 @@ float cPodstawa::Polozenie()
 }
 bool cPodstawa::Kolizja(cPodstawa Obj)
 {
-    if(abs(Obj.Polozenie() - x) <= 50)//szerokosc jednostki = 50
+    if(abs(Obj.Polozenie()-x)<=5)//szerokosc jednostki = 50
     {
+        std::cout<< abs(Obj.Polozenie()-x) <<" Kolizja!";
         return 1;
+
     }
     else
-    return 0 ;
+    {
+      std::cout<<"| "<<Obj.Polozenie()<<" - "<<x<<" = "<< abs(Obj.Polozenie()-x)<< "\n";
+      return 0 ;
+    }
+
 }
 
-void cPodstawa::Ruch(cPodstawa Obj)
+void cPodstawa::Ruch(float _MvSpd)
 {
-    if(this->Kolizja(Obj))
-    {//jezeli kolizja to:
-        x += MvSpd;
-    }
-    else
-    {
-    //nic
-    }
+  MvSpd = _MvSpd;
+    x += MvSpd;
 }
 
 void cPodstawa::czyZasieg(cPodstawa Obj)

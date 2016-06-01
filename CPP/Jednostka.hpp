@@ -10,10 +10,10 @@ private:
 	int Exp;//ile exp za zabicie
 
 public:
-	cJednostka(float);
+	cJednostka(float,float);
 	~cJednostka();
 
-	
+
 	void Rysuj();
 };
 

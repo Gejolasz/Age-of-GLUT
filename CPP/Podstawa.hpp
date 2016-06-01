@@ -22,17 +22,19 @@ protected:
     int HP;
     int Dmg;
     int Def;
-    int MvSpd;
+    float MvSpd;
     int Range;
 
     float x;
 
     int pEvo;
 
+    char Gracz;
+
 public:
     float Polozenie(void);
     bool Kolizja(cPodstawa);
-    void Ruch(cPodstawa);
+    void Ruch(float);
     void czyZasieg(cPodstawa);
     void minusHP(int);
 };

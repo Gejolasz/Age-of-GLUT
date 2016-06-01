@@ -17,8 +17,9 @@
 
 using namespace std;
 
-cBudynek Budynek(5000);
-cJednostka Jednostka(1);
+cBudynek BudynekA(5000,10,'A');//hp,x,gracz;
+cBudynek BudynekB(5000,-10,'B');//hp,x,gracz;
+cJednostka Jednostka(0,-0.05);
 
 void init()
 {
@@ -32,8 +33,15 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	Budynek.Rysuj();
+	BudynekA.Rysuj();
+	BudynekB.Rysuj();
 	Jednostka.Rysuj();
+
+	if(!Jednostka.cPodstawa::Kolizja(BudynekA) and !Jednostka.cPodstawa::Kolizja(BudynekB))
+	{
+		Jednostka.cPodstawa::Ruch(0.005);
+	}
+
 	glPopMatrix();
 
 	glutPostRedisplay();
@@ -78,7 +86,7 @@ int main(int argc, char* argv[])
 {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-	glutInitWindowSize(600, 600);
+	glutInitWindowSize(800, 800);
 	glutInitWindowPosition(0, 0);
 	glutCreateWindow("Age of GLUT");
 
