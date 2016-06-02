@@ -18,10 +18,10 @@
 
 using namespace std;
 
-
-
-cBudynek BudynekP(5000,18,'P');//hp,x,gracz; P strona
-cBudynek BudynekL(5000,-18,'L');//hp,x,gracz; L strona
+cBudynek BudynekA(5000,18,'P');//hp,x,gracz; P strona
+cBudynek BudynekB(5000,-18,'L');//hp,x,gracz; L strona
+cJednostka JednostkaL(-16,0.05,5,2,500);
+cJednostka JednostkaP(16,-0.05,5,2,500);
 
 std::vector<cJednostka> JednostkiP;
 std::vector<cJednostka> JednostkiL;
@@ -38,17 +38,20 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	BudynekP.Rysuj();
-	BudynekL.Rysuj();
-
+	BudynekA.Rysuj();
+	BudynekB.Rysuj();
+	JednostkaL.Rysuj();
+	JednostkaP.Rysuj();
 	for(int p = 0 ; p < JednostkiP.size();p++)
 	{
 			JednostkiP[p].Rysuj();
+			JednostkiP[p].cPodstawa::Ruch();
 	}
 
 	for(int l = 0 ; l < JednostkiL.size();l++)
 	{
 			JednostkiL[l].Rysuj();
+			JednostkiL[l].cPodstawa::Ruch();
 	}
 
 
@@ -70,23 +73,25 @@ void loop()
 	Sleep(1);
 	#endif
 
-	//kolizje P z L
-	for(int i = 0 ; i = JednostkiP.size() ; i++)
+	if(!JednostkaL.cPodstawa::Kolizja(BudynekA) and ! JednostkaL.cPodstawa::Kolizja(JednostkaP))
 	{
-		for(int j = 0 ; j = JednostkiL.size() ; j++)
-		{
-
-		}
+		JednostkaL.cPodstawa::Ruch();
 	}
+	if(JednostkaL.cPodstawa::czyZasieg(BudynekA))
+	BudynekA.minusHP(JednostkaL.Damage());
+	if(JednostkaL.cPodstawa::czyZasieg(JednostkaP))
+	JednostkaP.minusHP(JednostkaL.Damage());
 
-	//kolizje L z P
-	for(int i = 0 ; i = JednostkiL.size() ; i++)
+	if(!JednostkaP.cPodstawa::Kolizja(BudynekB) and !JednostkaP.cPodstawa::Kolizja(JednostkaL))
 	{
-		for(int j = 0 ; j = JednostkiP.size() ; j++)
-		{
-
-		}
+		JednostkaP.cPodstawa::Ruch();
 	}
+	if(JednostkaP.cPodstawa::czyZasieg(BudynekB))
+	BudynekB.minusHP(JednostkaP.Damage());
+	if(JednostkaP.cPodstawa::czyZasieg(JednostkaL))
+	JednostkaL.minusHP(JednostkaP.Damage());
+
+
 	glutPostRedisplay();
 }
 
@@ -102,7 +107,6 @@ void keyDown(unsigned char key, int x, int y)
 		break;
 		case 'l':
 		JednostkiL.push_back(cJednostka(-16,0.05,5,2,500));
-		break;
 	}
 }
 
