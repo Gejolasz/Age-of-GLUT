@@ -1,6 +1,7 @@
 #ifndef _JEDNOSTKA_HPP
 #define _JEDNOSTKA_HPP
 
+
 #include "Podstawa.hpp"
 
 class cJednostka : public cPodstawa

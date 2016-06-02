@@ -1,6 +1,7 @@
 #include "Budynek.hpp"
 #include <iostream>
 
+
 void cBudynek::Rysuj()
 {
   glPushMatrix();

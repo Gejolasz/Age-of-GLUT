@@ -1,6 +1,7 @@
 #include "Jednostka.hpp"
 
 
+
 cJednostka::cJednostka(float _x, float speed,float range,int damage, int _hp)
 {
 	x = _x;

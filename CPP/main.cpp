@@ -18,6 +18,8 @@
 
 using namespace std;
 
+
+
 cBudynek BudynekP(5000,18,'P');//hp,x,gracz; P strona
 cBudynek BudynekL(5000,-18,'L');//hp,x,gracz; L strona
 

@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
+
 bool cPodstawa::Kolizja(cPodstawa Obj)
 {
     if(abs(Obj.x-x)<=1)//szerokosc jednostki = 50
