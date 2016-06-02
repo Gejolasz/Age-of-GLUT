@@ -55,9 +55,6 @@ void display()
 	}
 
 
-
-
-
 	glPopMatrix();
 
 	glutPostRedisplay();
