@@ -40,3 +40,11 @@ void cPodstawa::minusHP(int oDmg)
     HP = HP - oDmg;
     std::cout<<" HP: "<<HP<<"\n";
 }
+bool cPodstawa::czyKoliduje()
+{
+  return koliduje;
+}
+void cPodstawa::Kolizja(bool kolizja)
+{
+  koliduje = kolizja;
+}

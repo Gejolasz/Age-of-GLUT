@@ -31,12 +31,15 @@ protected:
     int pEvo;
 
     char Gracz;
+    bool koliduje;
 
 public:
     bool Kolizja(cPodstawa);
     void Ruch();
     bool czyZasieg(cPodstawa);
     void minusHP(int);
+    bool czyKoliduje();
+    void Kolizja(bool);
 };
 
 #endif

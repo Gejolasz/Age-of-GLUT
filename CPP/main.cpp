@@ -40,18 +40,18 @@ void display()
 	glPushMatrix();
 	BudynekA.Rysuj();
 	BudynekB.Rysuj();
-	JednostkaL.Rysuj();
-	JednostkaP.Rysuj();
+	//JednostkaL.Rysuj();
+	//JednostkaP.Rysuj();
 	for(int p = 0 ; p < JednostkiP.size();p++)
 	{
 			JednostkiP[p].Rysuj();
-			JednostkiP[p].cPodstawa::Ruch();
+			//JednostkiP[p].cPodstawa::Ruch();
 	}
 
 	for(int l = 0 ; l < JednostkiL.size();l++)
 	{
 			JednostkiL[l].Rysuj();
-			JednostkiL[l].cPodstawa::Ruch();
+			//JednostkiL[l].cPodstawa::Ruch();
 	}
 
 
@@ -69,24 +69,88 @@ void loop()
 	#else//else WINDOWS etc.
 	Sleep(1);
 	#endif
+	for(int l = 0 ; l < JednostkiL.size();l++)
+	JednostkiL[l].cPodstawa::Kolizja(0);
+	for(int p = 0 ; p < JednostkiP.size();p++)
+	JednostkiP[p].cPodstawa::Kolizja(0);
 
-	if(!JednostkaL.cPodstawa::Kolizja(BudynekA) and ! JednostkaL.cPodstawa::Kolizja(JednostkaP))
+	for(int p = 0 ; p < JednostkiP.size();p++)
 	{
-		JednostkaL.cPodstawa::Ruch();
+		for(int l = 0 ; l < JednostkiL.size();l++)
+		{
+			if(JednostkiL[l].cPodstawa::Kolizja(BudynekA) or JednostkiL[l].cPodstawa::Kolizja(JednostkiP[p]))
+			{
+				JednostkiL[l].cPodstawa::Kolizja(1);
+			}
+			if(JednostkiL[l].cPodstawa::czyZasieg(BudynekA))
+			BudynekA.minusHP(JednostkaL.Damage());
+			if(JednostkiL[l].cPodstawa::czyZasieg(JednostkiP[p]))
+			JednostkiP[p].minusHP(JednostkiL[l].Damage());
+		}
 	}
-	if(JednostkaL.cPodstawa::czyZasieg(BudynekA))
-	BudynekA.minusHP(JednostkaL.Damage());
-	if(JednostkaL.cPodstawa::czyZasieg(JednostkaP))
-	JednostkaP.minusHP(JednostkaL.Damage());
 
-	if(!JednostkaP.cPodstawa::Kolizja(BudynekB) and !JednostkaP.cPodstawa::Kolizja(JednostkaL))
+	for(int p = 0 ; p < JednostkiP.size();p++)
 	{
-		JednostkaP.cPodstawa::Ruch();
+		for(int l = 0 ; l < JednostkiL.size();l++)
+		{
+			if(JednostkiP[p].cPodstawa::Kolizja(BudynekB) or  JednostkiP[p].cPodstawa::Kolizja(JednostkiL[l]))
+			{
+				JednostkiP[p].cPodstawa::Kolizja(1);
+			}
+			if(JednostkiP[p].cPodstawa::czyZasieg(BudynekB))
+			BudynekB.minusHP(JednostkaP.Damage());
+			if(JednostkiP[p].cPodstawa::czyZasieg(JednostkiL[l]))
+			JednostkiL[p].minusHP(JednostkiP[l].Damage());
+		}
 	}
-	if(JednostkaP.cPodstawa::czyZasieg(BudynekB))
-	BudynekB.minusHP(JednostkaP.Damage());
-	if(JednostkaP.cPodstawa::czyZasieg(JednostkaL))
-	JednostkaL.minusHP(JednostkaP.Damage());
+
+	for(int l = 0 ; l < JednostkiL.size();l++)
+	{
+		if(!JednostkiL[l].cPodstawa::czyKoliduje())
+		JednostkiL[l].cPodstawa::Ruch();
+	}
+	for(int p = 0 ; p < JednostkiP.size();p++)
+	{
+		if(!JednostkiP[p].cPodstawa::czyKoliduje())
+		JednostkiP[p].cPodstawa::Ruch();
+	}
+
+	for(int l = 0 ; l < JednostkiL.size();l++)
+	{
+		if(JednostkiL[l].ileHP()<=0)
+		JednostkiL.erase(JednostkiL.begin()+l);
+	}
+	for(int l = 0 ; l < JednostkiP.size();l++)
+	{
+		if(JednostkiP[l].ileHP()<=0)
+		JednostkiP.erase(JednostkiP.begin()+l);
+	}
+
+
+
+	if(0)
+	{
+		if(!JednostkaL.cPodstawa::Kolizja(BudynekA) and ! JednostkaL.cPodstawa::Kolizja(JednostkaP))
+		{
+			JednostkaL.cPodstawa::Ruch();
+		}
+		if(JednostkaL.cPodstawa::czyZasieg(BudynekA))
+		BudynekA.minusHP(JednostkaL.Damage());
+		if(JednostkaL.cPodstawa::czyZasieg(JednostkaP))
+		JednostkaP.minusHP(JednostkaL.Damage());
+
+		if(!JednostkaP.cPodstawa::Kolizja(BudynekB) and !JednostkaP.cPodstawa::Kolizja(JednostkaL))
+		{
+			JednostkaP.cPodstawa::Ruch();
+		}
+		if(JednostkaP.cPodstawa::czyZasieg(BudynekB))
+		BudynekB.minusHP(JednostkaP.Damage());
+		if(JednostkaP.cPodstawa::czyZasieg(JednostkaL))
+		JednostkaL.minusHP(JednostkaP.Damage());
+	}
+
+
+
 
 
 	glutPostRedisplay();
